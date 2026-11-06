@@ -1,4 +1,3 @@
-Transactions & Concurrency Control
 •	Transaction Scenario: Updating patient status during pharmacy visits requires transactional atomicity.
 •	Implementation: Wrapped multi-table updates (Pharmacy Log and clinical metrics) within BEGIN TRANSACTION and COMMIT TRANSACTION blocks with explicit TRY...CATCH exception handling and 
 automatic ROLLBACK on failure.
