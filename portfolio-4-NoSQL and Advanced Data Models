@@ -1,4 +1,3 @@
-NoSQL and Advanced Data Models
 •	Data Model: JSON/BSON Document Model in MongoDB to support unstructured and dynamic patient clinical timelines.
 •	Sample Structure:
 •	{
