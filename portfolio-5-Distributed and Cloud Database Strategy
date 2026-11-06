@@ -1,4 +1,3 @@
-Distributed and Cloud Database Strategy
 •	Sharding Strategy: Horizontal sharding configured using LGA as the shard key to route and store patient data closest to 
 their local health centers while allowing central reporting.
 •	Replication & High Availability: Primary-Secondary replica set configuration. Clinic workstations submit real-time updates 
