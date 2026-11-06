@@ -38,4 +38,3 @@ CREATE TABLE ViralLoadTest (
     DateofCurrentViralLoad DATE NULL,
     CONSTRAINT FK_ViralLoad_Patient FOREIGN KEY (PatientID) REFERENCES Patient(PatientID)
 );
-
