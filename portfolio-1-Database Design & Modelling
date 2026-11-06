@@ -1,1 +1,41 @@
+-- Portfolio 1: Database Design & Modelling (3NF Schema DDL)
+-- Case Study: Plateau State Integrated ART Clinic Network
+
+-- 1. Facility Reference Table
+CREATE TABLE Facility (
+    FacilityID INT IDENTITY(1,1) PRIMARY KEY,
+    FacilityName VARCHAR(50) NOT NULL UNIQUE,
+    LGA VARCHAR(50) NOT NULL
+);
+
+-- 2. Patient Demographics Table
+CREATE TABLE Patient (
+    PatientID INT IDENTITY(1,1) PRIMARY KEY,
+    FacilityID INT NOT NULL,
+    Sex CHAR(1) CHECK (Sex IN ('M', 'F')),
+    Current_Age INT CHECK (Current_Age >= 0),
+    ARTStartDate DATE NOT NULL,
+    CONSTRAINT FK_Patient_Facility FOREIGN KEY (FacilityID) REFERENCES Facility(FacilityID)
+);
+
+-- 3. Pharmacy Dispensation & Clinical Status Log
+CREATE TABLE PharmacyLog (
+    LogID INT IDENTITY(1,1) PRIMARY KEY,
+    PatientID INT NOT NULL,
+    Pharmacy_LastPickupdate DATE NOT NULL,
+    CurrentARTStatus_Pharmacy VARCHAR(30) NOT NULL CHECK (
+        CurrentARTStatus_Pharmacy IN ('Active', 'LTFU', 'Stopped', 'Transferred Out', 'Dead', 'Lost to followup')
+    ),
+    LastWeight DECIMAL(5,2),
+    CONSTRAINT FK_Pharmacy_Patient FOREIGN KEY (PatientID) REFERENCES Patient(PatientID)
+);
+
+-- 4. Laboratory Viral Load Monitoring Table
+CREATE TABLE ViralLoadTest (
+    TestID INT IDENTITY(1,1) PRIMARY KEY,
+    PatientID INT NOT NULL,
+    CurrentViralLoad FLOAT NULL,
+    DateofCurrentViralLoad DATE NULL,
+    CONSTRAINT FK_ViralLoad_Patient FOREIGN KEY (PatientID) REFERENCES Patient(PatientID)
+);
 
