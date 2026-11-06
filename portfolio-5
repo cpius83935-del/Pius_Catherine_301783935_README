@@ -1,0 +1,7 @@
+Distributed and Cloud Database Strategy
+•	Sharding Strategy: Horizontal sharding configured using LGA as the shard key to route and store patient data closest to their
+local health centers while allowing central reporting.
+•	Replication & High Availability: Primary-Secondary replica set configuration. Clinic workstations submit real-time 
+updates to the Primary node, while analytical queries and dashboards pull data from secondary read-replicas.
+•	CAP Trade-off: Prioritised Availability and Partition Tolerance (AP) with eventual consistency to ensure rural health 
+facilities can continue capturing records during internet disruptions and resynchronize when connected.
