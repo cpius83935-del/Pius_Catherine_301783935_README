@@ -1,0 +1,5 @@
+•	Organisation Name / Scenario: Plateau State Integrated ART (Antiretroviral Therapy) Clinic.
+•	Nature of the System: A multi-facility public-health clinical database tracking HIV/ART patients across various Local Government Areas (LGAs such as Riyom, Kanke, and Bassa) and health centers (such as General Hospital R, General Hospital K, and Comprehensive Health Centres).
+•	Users of the Database: Doctors, Data Clerks, Pharmacists, Lab Technicians, and Health Administrators.
+•	Major Data Stored: Patient demographics (Age, Sex, Facility, LGA), clinical enrolment timelines (ART Start Date), pharmacy drug pickup logs, weight metrics, and longitudinal viral load test results.
+•	Key Operations: Patient enrolment, updating pharmacy drug pickup dates and retention status, recording viral load lab results, and executing aggregate reporting on patient outcomes across facilities.
