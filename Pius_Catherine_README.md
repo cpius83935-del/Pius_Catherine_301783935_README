@@ -1,10 +1,10 @@
 # MIT 8103 Advanced Database Systems - Continuous Assessment Portfolio
 
-**Student Name:** [Your Name]  
-**Student ID:** [Your Student ID]  
+**Student Name:** Catherine Pius
+**Student ID:** 301783935 
 **Course:** MIT 8103 Advanced Database Systems  
 **Academic Session:** 2026/2027 First Semester  
-**Case Study:** Plateau State Integrated ART (Antiretroviral Therapy) Clinic Network  
+**Case Study:** Plateau State Integrated ART (Antiretroviral Therapy) Clinic 
 
 ---
 
@@ -16,7 +16,7 @@ This repository contains the practical portfolio deliverables for **MIT 8103 Adv
 ## 📁 Repository Structure
 
 ```text
-advanced-database-portfolio/
+Pius-Catherine-301783935-portfolio/
 ├── portfolio-1-database-design/
 │   └── schema-ddl.sql
 ├── portfolio-2-query-optimisation/
