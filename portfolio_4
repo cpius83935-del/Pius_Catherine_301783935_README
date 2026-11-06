@@ -1,0 +1,18 @@
+NoSQL and Advanced Data Models
+•	Data Model: JSON/BSON Document Model in MongoDB to support unstructured and dynamic patient clinical timelines.
+•	Sample Structure:
+•	{
+•	  "PatientID": 1045,
+•	  "Facility": { "Name": "GH R", "LGA": "RIYOM" },
+•	  "Demographics": { "Sex": "F", "Age": 50 },
+•	  "ClinicalTimeline": [
+•	    {
+•	      "PickupDate": "2026-02-02",
+•	      "Status": "Active",
+•	      "Weight": 46.0,
+•	      "ViralLoad": 873.0
+•	    }
+•	  ]
+•	}
+•	Suitability: Document modeling allows nesting longitudinal lab test histories inside single patient documents, 
+eliminating expensive SQL joins during fast retrieval on clinical dashboards.
