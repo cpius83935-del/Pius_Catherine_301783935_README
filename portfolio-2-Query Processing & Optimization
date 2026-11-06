@@ -1,4 +1,3 @@
-Query Processing & Optimization
 •	Analytical Queries: SQL scripts were developed to calculate suppressed viral load rates ($<1000\text{ copies/ml}) and track patient retention across facilities.
 •	Execution & Indexing: Sequential table scans were identified as bottlenecks on large patient datasets. Non-clustered B-tree indexes were created on high-cardinality join and filter columns:
 •	CREATE INDEX IX_Pharmacy_Status ON PharmacyLog(CurrentARTStatus_Pharmacy);
