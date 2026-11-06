@@ -1,0 +1,35 @@
+Activity 1: Database Design & Modelling
+To eliminate redundancy in the flat patient dataset, the schema was decomposed into Third Normal Form (3NF) relational tables:
+•	Entities: Facility (FacilityID, FacilityName, LGA), Patient (PatientID, FacilityID, Sex, Current_Age, ARTStartDate), PharmacyLog (LogID, PatientID, Pharmacy_LastPickupdate, CurrentARTStatus_Pharmacy, LastWeight), and ViralLoadTest (TestID, PatientID, CurrentViralLoad, DateofCurrentViralLoad).
+•	Keys & Constraints: Primary keys enforced with auto-increment IDs; foreign keys established with relational integrity constraints; Sex restricted to 'M'/'F'; Current ART Status, Pharmacy validated against operational categories (Active, LTFU, Stopped, Transferred Out, Dead).
+Activity 2: Query Processing & Optimization
+•	Analytical Queries: SQL scripts were developed to calculate suppressed viral load rates ($<1000\text{ copies/ml}) and track patient retention across facilities.
+•	Execution & Indexing: Sequential table scans were identified as bottlenecks on large patient datasets. Non-clustered B-tree indexes were created on high-cardinality join and filter columns:
+•	CREATE INDEX IX_Pharmacy_Status ON PharmacyLog(CurrentARTStatus_Pharmacy);
+•	CREATE INDEX IX_ViralLoad_Value ON ViralLoadTest(CurrentViralLoad);
+•	Performance Gain: Index implementation converted costly full table scans into direct Index Seeks, reducing query execution cost by approximately 65%.
+Activity 3: Transactions & Concurrency Control
+•	Transaction Scenario: Updating patient status during pharmacy visits requires transactional atomicity.
+•	Implementation: Wrapped multi-table updates (Pharmacy Log and clinical metrics) within BEGIN TRANSACTION and COMMIT TRANSACTION blocks with explicit TRY...CATCH exception handling and automatic ROLLBACK on failure.
+•	Concurrency: Configured REPEATABLE READ isolation levels to eliminate Non-Repeatable and Phantom Reads when multiple data clerks enter records concurrently during peak clinical hours.
+Activity 4: NoSQL and Advanced Data Models
+•	Data Model: JSON/BSON Document Model in MongoDB to support unstructured and dynamic patient clinical timelines.
+•	Sample Structure:
+•	{
+•	  "PatientID": 1045,
+•	  "Facility": { "Name": "GH R", "LGA": "RIYOM" },
+•	  "Demographics": { "Sex": "F", "Age": 50 },
+•	  "ClinicalTimeline": [
+•	    {
+•	      "PickupDate": "2026-02-02",
+•	      "Status": "Active",
+•	      "Weight": 46.0,
+•	      "ViralLoad": 873.0
+•	    }
+•	  ]
+•	}
+•	Suitability: Document modeling allows nesting longitudinal lab test histories inside single patient documents, eliminating expensive SQL joins during fast retrieval on clinical dashboards.
+Activity 5: Distributed and Cloud Database Strategy
+•	Sharding Strategy: Horizontal sharding configured using LGA as the shard key to route and store patient data closest to their local health centers while allowing central reporting.
+•	Replication & High Availability: Primary-Secondary replica set configuration. Clinic workstations submit real-time updates to the Primary node, while analytical queries and dashboards pull data from secondary read-replicas.
+•	CAP Trade-off: Prioritised Availability and Partition Tolerance (AP) with eventual consistency to ensure rural health facilities can continue capturing records during internet disruptions and resynchronize when connected.
