@@ -1,4 +1,3 @@
-Database Design & Modelling
 To eliminate redundancy in the flat patient dataset, the schema was decomposed into Third Normal Form (3NF) relational tables:
 •	Entities: Facility (FacilityID, FacilityName, LGA), Patient (PatientID, FacilityID, Sex, Current_Age, ARTStartDate), PharmacyLog (LogID, PatientID, Pharmacy_LastPickupdate, CurrentARTStatus_Pharmacy, LastWeight), and ViralLoadTest (TestID, PatientID, CurrentViralLoad, DateofCurrentViralLoad).
 •	Keys & Constraints: Primary keys enforced with auto-increment IDs; foreign keys established with relational integrity constraints; Sex restricted to 'M'/'F'; Current ART Status, Pharmacy validated against operational categories (Active, LTFU, Stopped, Transferred Out, Dead).
